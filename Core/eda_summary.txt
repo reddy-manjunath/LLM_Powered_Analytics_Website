@@ -1,0 +1,45 @@
+--- Dataset Shape ---
+rows:  7 columns :  5
+--- Column Types ---
+order_id: int64
+order_date: datetime64[us]
+customer_age: float64
+is_premium: str
+total_amount: float64
+
+--- Missing Values ---
+order_id: 0.0%
+order_date: 0.0%
+customer_age: 0.0%
+is_premium: 0.0%
+total_amount: 0.0%
+
+--- Univariate Numeric ---
+Column : order_id ->[ mean: 1004.0 | median : 1004.0 | std: 2.16| variance_level: low | skewness : approximately symmetric | tail_behaviour : light-tailed | modality : unimodal | min_value : 1001 | max_value : 1007 | p25 : 1002.5 | p75 : 1005.5] | p95 : 1006.7 | p99 : 1006.94
+Column : customer_age ->[ mean: 32.09 | median : 29.0 | std: 7.06| variance_level: low | skewness : right-skewed | tail_behaviour : moderate tails | modality : unimodal | min_value : 25.0 | max_value : 45.0 | p25 : 27.814999999999998 | p75 : 35.0] | p95 : 42.89999999999999 | p99 : 44.58
+Column : total_amount ->[ mean: 1260.76 | median : 1200.5 | std: 455.95| variance_level: low | skewness : right-skewed | tail_behaviour : heavy-tailed | modality : unimodal | min_value : 760.0 | max_value : 2150.0 | p25 : 971.92625 | p75 : 1385.5] | p95 : 1934.2249999999995 | p99 : 2106.845
+
+--- Univariate Categorical ---
+column -> is_premium | unique_count: 2 | cardinality_level: low | top_category: Yes | top_share: 57.14% | distribution: balanced | are_categories: no | 
+
+--- Bivariate Numeric vs Category ---
+pair : order_id vs is_premium | categories : 2 | mean_range : 1004.0-1004.0 | mean_ratio : 1.0 | dominant_category  Yes | dominant_share : 0.57 | effect_strength : weak 
+pair : customer_age vs is_premium | categories : 2 | mean_range : 27.41-38.33 | mean_ratio : 1.4 | dominant_category  Yes | dominant_share : 0.57 | effect_strength : moderate 
+pair : total_amount vs is_premium | categories : 2 | mean_range : 901.28-1530.38 | mean_ratio : 1.7 | dominant_category  Yes | dominant_share : 0.57 | effect_strength : strong 
+
+--- Bivariate Numeric vs Numeric ---
+pair: order_id vs customer_age | correlation: 0.193 | direction: positive | strength: negligible | relationship: linear_association | causation: not_established
+pair: order_id vs total_amount | correlation: 0.187 | direction: positive | strength: negligible | relationship: linear_association | causation: not_established
+pair: customer_age vs total_amount | correlation: -0.609 | direction: negative | strength: moderate | relationship: linear_association | causation: not_established
+
+--- Bivariate Category vs Category ---
+
+--- Bivariate Time vs Numeric ---
+pair: order_date vs order_id | aggregation: mean | granularity: monthly | trend: increasing | trend_strength: weak | volatility: low
+pair: order_date vs customer_age | aggregation: mean | granularity: monthly | trend: increasing | trend_strength: moderate | volatility: low
+pair: order_date vs total_amount | aggregation: mean | granularity: monthly | trend: increasing | trend_strength: weak | volatility: moderate
+
+--- Multivariate Numeric ---
+multivariate_pair: order_id & customer_age | correlation: 0.193 | direction: positive | strength: weak | redundancy: possible | causation: not_established
+multivariate_pair: order_id & total_amount | correlation: 0.187 | direction: positive | strength: weak | redundancy: possible | causation: not_established
+multivariate_pair: customer_age & total_amount | correlation: -0.609 | direction: negative | strength: moderate | redundancy: possible | causation: not_established
